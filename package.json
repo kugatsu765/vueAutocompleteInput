@@ -1,10 +1,12 @@
 {
-  "name": "autocomplete-component",
+  "name": "@kugatsu/vueautocompleteinput",
+  "description": "Vuejs component for autocomplete input",
   "version": "0.1.0",
-  "private": true,
+  "private": false,
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
+    "build-lib": "vue build --target lib --name vueAutocompleteInput ./src/components/Autocomplete.vue",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
@@ -12,7 +14,7 @@
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "3.6.0",
-    "@vue/cli-plugin-eslint": "3.6.0",
+    "@vue/cli-plugin-eslint": "^3.6.0",
     "@vue/cli-service": "3.6.0",
     "babel-eslint": "^10.0.1",
     "eslint": "^5.8.0",
@@ -43,6 +45,15 @@
     "last 2 versions",
     "not ie <= 8"
   ],
-  "keywords": [],
-  "description": "Autocomplete component in vuejs"
+  "keywords": [
+    "vue",
+    "vuejs",
+    "autocomplete",
+    "input",
+    "plugin",
+    "kugatsu"
+  ],
+  "license": "MIT",
+  "main": "dist/vueAutocompleteInput.common.js",
+  "repository": "https://github.com/kugatsu765/vueAutocompleteInput"
 }

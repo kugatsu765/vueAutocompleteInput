@@ -114,7 +114,7 @@ export default {
   },
   watch: {
     items(newValue) {
-      const item = this.items.find(item => item["id"] === this.value.id);
+      const item = newValue.find(item => item["id"] === this.value.id);
       if (item !== undefined) {
         this.search = item[this.propertyToDisplay];
       }
