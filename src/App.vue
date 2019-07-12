@@ -6,7 +6,7 @@
       :items="fruits"
       placeholder="Fruits"
       empty-results="Aucun fruit ne correspond à votre recherche"
-      property-to-display="name"
+      property-to-display="title"
       @selected="logSmt"
       @clear="clearField"
       custom-input="blue"
@@ -28,26 +28,35 @@ export default {
   data: function() {
     return {
       fruits: [
-        { id: 1, name: "Banana" },
-        { id: 2, name: "Orange" },
-        { id: 3, name: "Pêche" },
-        { id: 4, name: "Abricot" },
-        { id: 5, name: "Figue" },
-        { id: 6, name: "Raisin" },
-        { id: 7, name: "Mangue" },
-        { id: 8, name: "Pasteck" },
-        { id: 9, name: "Melon" },
-        { id: 10, name: "Kiwi" }
+        // { id: 1, name: "Banana" },
+        // { id: 2, name: "Orange" },
+        // { id: 3, name: "Pêche" },
+        // { id: 4, name: "Abricot" },
+        // { id: 5, name: "Figue" },
+        // { id: 6, name: "Raisin" },
+        // { id: 7, name: "Mangue" },
+        // { id: 8, name: "Pasteck" },
+        // { id: 9, name: "Melon" },
+        // { id: 10, name: "Kiwi" }
       ],
-      fruit: undefined
+      fruit: { "userId": 1, "id": 7, "title": "magnam facilis autem", "body": "dolore placeat quibusdam ea quo vitae\nmagni quis enim qui quis quo nemo aut saepe\nquidem repellat excepturi ut quia\nsunt ut sequi eos ea sed quas" }
     };
+  },
+  mounted() {
+    this.$nextTick(() => {
+      fetch("https://jsonplaceholder.typicode.com/posts")
+        .then(response => response.json())
+        .then(json => {
+          this.fruits = json
+        });
+    });
   },
   methods: {
     logSmt(value) {
       console.log({ value: JSON.stringify(value) });
     },
     clearField() {
-      console.log('clear');
+      console.log("clear");
     }
   }
 };
