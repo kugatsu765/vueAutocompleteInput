@@ -1,2 +1,0 @@
-# vueAutocompleteInput
-Created with CodeSandbox
