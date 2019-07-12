@@ -9,7 +9,7 @@
       @keyup.enter="onEnter"
       @keydown.down="onArrowDown"
       @keydown.up="onArrowUp"
-      @focus="openResult"
+      @focus="filterItems"
       :placeholder="placeholder"
       :disabled="disable"
       autocomplete="off"
@@ -137,9 +137,6 @@ export default {
         this.search = item[this.propertyToDisplay];
       }
     }
-  },
-  computed: {
-
   },
   methods: {
     initialiseWithValue() {
