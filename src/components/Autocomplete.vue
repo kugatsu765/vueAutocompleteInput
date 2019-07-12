@@ -9,15 +9,18 @@
       @keyup.enter="onEnter"
       @keydown.down="onArrowDown"
       @keydown.up="onArrowUp"
+      @focus="openResult"
       :placeholder="placeholder"
       :disabled="disable"
-    >
-    <div class="search-result" v-if="displayResult">
+      autocomplete="off"
+      :class="customInput"
+    />
+    <div class="search-result" :class="customResultsBox" v-if="displayResult">
       <ul class="search-result-items">
         <li
           v-for="(item, index) in results"
           class="search-result-item"
-          :class="{'active': index === arrowCounter}"
+          :class="rowClass(index)"
           :key="item.id"
           @click="select(item)"
         >{{item[propertyToDisplay]}}</li>
@@ -48,6 +51,7 @@
   width: 100%;
   max-height: 300px;
   overflow: auto;
+  z-index: 400;
 }
 .search-result-items {
   padding: 0;
@@ -64,11 +68,11 @@
 }
 
 .search-result-item:hover {
-  background-color: #4299E1;
+  background-color: #4299e1;
   color: white;
 }
 .active {
-  background-color: #BEE3F8;
+  background-color: #bee3f8;
 }
 </style>
 
@@ -105,7 +109,19 @@ export default {
     disable: {
       type: Boolean,
       default: false
-    }
+    },
+    customInput: {
+      type: String,
+      default: ""
+    },
+    customResultsBox: {
+      type: String,
+      default: ""
+    },
+    customResultsRow: {
+      type: String,
+      default: ""
+    },
   },
   mounted: function() {
     this.$nextTick(function() {
@@ -119,6 +135,9 @@ export default {
         this.search = item[this.propertyToDisplay];
       }
     }
+  },
+  computed: {
+
   },
   methods: {
     initialiseWithValue() {
@@ -137,6 +156,10 @@ export default {
           .toLowerCase()
           .includes(this.search.toLowerCase())
       );
+
+      if(this.search === "") {
+        this.$emit("clear");
+      }
     },
     select(value) {
       if (typeof value === "string") {
@@ -200,6 +223,12 @@ export default {
       if (el.length > 0) {
         el[0].scrollIntoView({ behavior: "smooth", block: "center" });
       }
+    }
+    ,
+    rowClass(index) {
+      let custom = this.customResultsRow;
+      if (index == this.arrowCounter) custom += ' active'
+      return custom
     }
   }
 };

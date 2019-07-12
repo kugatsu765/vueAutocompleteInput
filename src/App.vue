@@ -8,6 +8,10 @@
       empty-results="Aucun fruit ne correspond à votre recherche"
       property-to-display="name"
       @selected="logSmt"
+      @clear="clearField"
+      custom-input="blue"
+      custom-results-box="red"
+      custom-results-row="pink"
     ></Autocomplete>
     <p>Je suis en dessous</p>
   </div>
@@ -41,6 +45,9 @@ export default {
   methods: {
     logSmt(value) {
       console.log({ value: JSON.stringify(value) });
+    },
+    clearField() {
+      console.log('clear');
     }
   }
 };
@@ -52,5 +59,21 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;
+}
+
+.blue {
+  background-color: aqua;
+}
+
+.red {
+  background-color: red !important;
+}
+
+.pink {
+  background-color: pink !important;
+}
+
+.pink:hover {
+  background-color: green !important;
 }
 </style>
