@@ -9,9 +9,6 @@
       property-to-display="title"
       @selected="logSmt"
       @clear="clearField"
-      custom-input="blue"
-      custom-results-box="red"
-      custom-results-row="pink"
     ></Autocomplete>
     <p>Je suis en dessous</p>
   </div>

@@ -71,7 +71,7 @@
   background-color: #4299e1;
   color: white;
 }
-.active {
+.active-row {
   background-color: #bee3f8;
 }
 </style>
@@ -221,7 +221,7 @@ export default {
       }
     },
     followArrow() {
-      const el = document.getElementsByClassName("active");
+      const el = document.getElementsByClassName("active-row");
       if (el.length > 0) {
         el[0].scrollIntoView({ behavior: "smooth", block: "center" });
       }
@@ -229,7 +229,7 @@ export default {
     ,
     rowClass(index) {
       let custom = this.customResultsRow;
-      if (index == this.arrowCounter) custom += ' active'
+      if (index == this.arrowCounter) custom += ' active-row'
       return custom
     }
   }

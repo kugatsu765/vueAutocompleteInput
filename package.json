@@ -4,6 +4,7 @@
   "version": "0.1.2",
   "private": false,
   "scripts": {
+    "init": "npm install",
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "build-lib": "vue build --target lib --name vueAutocompleteInput ./src/components/Autocomplete.vue",
