@@ -61,7 +61,7 @@ You can huse slot to fully customize item row.
 
 Sample 💩:
 
-````javascript
+```javascript
 <template v-slot:listItem="slotProps">
     <h4 style="margin: 0;">{{slotProps.item.title}}</h4>
     <br>
@@ -77,17 +77,20 @@ You have the possibility of surchage class or redifign them.
 
 ##### All class used
 
-| Class                           |                    surchage |
-| ------------------------------- | --------------------------: |
-| autocomplete                    |                           no|
-| autocomplete-input              |                           no|
-| utocomplete-input-custom        |                   classInput|
-| autocomplete-list-wrapper       |                           no|
-| autocomplete-list-wrapper-custom|                 classWrapper|
-| autocomplete-list               |                           no|
-| autocomplete-list-custom        |                    classList|
-| autocomplete-list-item          |                           no|
-| autocomplete-list-item-custom   |                    classItem|
-| autocomplete-item-active-custom |              classItemActive|
-| search-result-item-disabled     |                           no|
-````
+| Class                            |        surchage |
+| -------------------------------- | --------------: |
+| autocomplete                     |              no |
+| autocomplete-input               |              no |
+| utocomplete-input-custom         |      classInput |
+| autocomplete-list-wrapper        |              no |
+| autocomplete-list-wrapper-custom |    classWrapper |
+| autocomplete-list                |              no |
+| autocomplete-list-custom         |       classList |
+| autocomplete-list-item           |              no |
+| autocomplete-list-item-custom    |       classItem |
+| autocomplete-item-active-custom  | classItemActive |
+| search-result-item-disabled      |              no |
+
+```
+
+```
