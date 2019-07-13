@@ -1,9 +1,10 @@
 <template>
-  <div class="autocomplete">
+  <div class="autocomplete" :class="classComponent">
     <input
       id="search-input"
       type="text"
       name="search-input"
+      class="autocomplete-input"
       v-model="search"
       @input="filterItems"
       @keyup.enter="onEnter"
@@ -13,13 +14,13 @@
       :placeholder="placeholder"
       :disabled="disable"
       autocomplete="off"
-      :class="customInput"
-    />
-    <div class="search-result" :class="customResultsBox" v-if="displayResult">
-      <ul class="search-result-items">
+      :class="classInput"
+    >
+    <div class="autocomplete-list-wrapper" :class="classWrapper" v-if="displayResult">
+      <ul class="autocomplete-list" :class="classList">
         <li
           v-for="(item, index) in results"
-          class="search-result-item"
+          class="autocomplete-list-item"
           :class="rowClass(index)"
           :key="item.id"
           @click="select(item)"
@@ -31,48 +32,71 @@
 </template>
 
 <style scoped>
-#search-input {
-  width: 100%;
-  margin: auto;
-  box-sizing: border-box;
-  border: 1px solid #bfc3c9;
-  padding: 0.4rem;
-}
 .autocomplete {
   position: relative;
 }
-.search-result {
+
+.autocomplete-input {
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.autocomplete-input-custom {
+  color: #2d3748;
+  box-shadow: 1px 1px 4px #80808042;
+  padding: 0.7rem;
+  background-color: white;
+  border: 1px solid #edf2f7;
+  border-radius: 4px;
+}
+
+.autocomplete-list-wrapper {
   position: absolute;
-  top: 40px;
+  width: 100%;
+  z-index: 500;
+}
+
+.autocomplete-list-wrapper-custom {
+  transform: translateY(0.75rem);
+}
+
+.autocomplete-list {
+  padding: 0;
+  margin: 0;
+  overflow: auto;
+}
+
+.autocomplete-list-custom {
   background-color: white;
   border: 1px solid #edf2f7;
   border-radius: 4px;
   box-shadow: 1px 1px 4px #80808042;
-  width: 100%;
   max-height: 300px;
-  overflow: auto;
-  z-index: 400;
 }
-.search-result-items {
-  padding: 0;
-  margin: 0;
-}
-.search-result-item {
+
+.autocomplete-list-item {
   list-style: none;
-  padding: 0.8rem;
   cursor: pointer;
+}
+
+.autocomplete-list-item-custom {
+  padding: 0.8rem;
+}
+
+.autocomplete-list-item-custom:hover {
+  background-color: #4299e1;
+  color: white;
+}
+
+/* Add to props */
+.autocomplete-item-active-custom {
+  background-color: #bee3f8;
 }
 
 .search-result-item-disabled {
   padding: 0.8rem;
-}
-
-.search-result-item:hover {
-  background-color: #4299e1;
-  color: white;
-}
-.active-row {
-  background-color: #bee3f8;
 }
 </style>
 
@@ -93,7 +117,10 @@ export default {
       type: Array,
       required: true
     },
-    value: undefined,
+    value: {
+      type: Object,
+      required: true
+    },
     placeholder: {
       type: String,
       default: "Search"
@@ -110,18 +137,30 @@ export default {
       type: Boolean,
       default: false
     },
-    customInput: {
+    classComponent: {
       type: String,
       default: ""
     },
-    customResultsBox: {
+    classInput: {
       type: String,
-      default: ""
+      default: "autocomplete-input-custom"
     },
-    customResultsRow: {
+    classWrapper: {
       type: String,
-      default: ""
+      default: "autocomplete-list-wrapper-custom"
     },
+    classList: {
+      type: String,
+      default: "autocomplete-list-custom"
+    },
+    classItem: {
+      type: String,
+      default: "autocomplete-list-item-custom"
+    },
+    classItemActive: {
+      type: String,
+      default: "autocomplete-item-active-custom"
+    }
   },
   mounted: function() {
     this.$nextTick(function() {
@@ -131,7 +170,7 @@ export default {
   watch: {
     items(newValue) {
       this.results = newValue;
-      if (typeof this.value === 'undefined') return ;
+      if (typeof this.value === "undefined") return;
       const item = newValue.find(item => item["id"] === this.value.id);
       if (item !== undefined) {
         this.search = item[this.propertyToDisplay];
@@ -156,7 +195,7 @@ export default {
           .includes(this.search.toLowerCase())
       );
 
-      if(this.search === "") {
+      if (this.search === "") {
         this.$emit("clear");
       }
     },
@@ -188,7 +227,7 @@ export default {
     },
     handleoutsideClick(e) {
       if (!this.$el.contains(e.target)) {
-        this.closeResult();
+        this.onEnter();
         document.removeEventListener("click", this.handleoutsideClick);
       }
     },
@@ -218,16 +257,15 @@ export default {
       }
     },
     followArrow() {
-      const el = document.getElementsByClassName("active-row");
+      const el = document.getElementsByClassName(this.classItemActive);
       if (el.length > 0) {
         el[0].scrollIntoView({ behavior: "smooth", block: "center" });
       }
-    }
-    ,
+    },
     rowClass(index) {
-      let custom = this.customResultsRow;
-      if (index == this.arrowCounter) custom += ' active-row'
-      return custom
+      let custom = this.classItem;
+      if (index == this.arrowCounter) custom += " " + this.classItemActive;
+      return custom;
     }
   }
 };

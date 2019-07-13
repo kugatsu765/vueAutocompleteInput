@@ -1,14 +1,17 @@
 <template>
   <div id="app">
-    <p>J'ai envie de manger un/une {{ fruit ? fruit : '??'}}</p>
+    <p>J'ai envie de manger un/une {{ article ? article : '??'}}</p>
     <Autocomplete
-      v-model="fruit"
-      :items="fruits"
-      placeholder="Fruits"
-      empty-results="Aucun fruit ne correspond à votre recherche"
+      v-model="article"
+      :items="articles"
+      placeholder="Article"
+      empty-results="Aucun article ne correspond à votre recherche"
       property-to-display="title"
       @selected="logSmt"
       @clear="clearField"
+      class-input="my-custom-input"
+      class-item-active="my-custom-item-active"
+      class-item="my-custom-item"
     ></Autocomplete>
     <p>Je suis en dessous</p>
   </div>
@@ -24,19 +27,14 @@ export default {
   },
   data: function() {
     return {
-      fruits: [
-        // { id: 1, name: "Banana" },
-        // { id: 2, name: "Orange" },
-        // { id: 3, name: "Pêche" },
-        // { id: 4, name: "Abricot" },
-        // { id: 5, name: "Figue" },
-        // { id: 6, name: "Raisin" },
-        // { id: 7, name: "Mangue" },
-        // { id: 8, name: "Pasteck" },
-        // { id: 9, name: "Melon" },
-        // { id: 10, name: "Kiwi" }
-      ],
-      fruit: { "userId": 1, "id": 7, "title": "magnam facilis autem", "body": "dolore placeat quibusdam ea quo vitae\nmagni quis enim qui quis quo nemo aut saepe\nquidem repellat excepturi ut quia\nsunt ut sequi eos ea sed quas" }
+      articles: [],
+      article: {
+        userId: 1,
+        id: 7,
+        title: "magnam facilis autem",
+        body:
+          "dolore placeat quibusdam ea quo vitae\nmagni quis enim qui quis quo nemo aut saepe\nquidem repellat excepturi ut quia\nsunt ut sequi eos ea sed quas"
+      }
     };
   },
   mounted() {
@@ -44,7 +42,7 @@ export default {
       fetch("https://jsonplaceholder.typicode.com/posts")
         .then(response => response.json())
         .then(json => {
-          this.fruits = json
+          this.articles = json;
         });
     });
   },
@@ -67,19 +65,26 @@ export default {
   color: #2c3e50;
 }
 
-.blue {
-  background-color: aqua;
+.my-custom-input {
+  color: white;
+  box-shadow: 1px 1px 4px #80808042;
+  padding: 0.7rem !important;
+  background-color: #2d3748;
+  border: 1px solid #edf2f7;
+  border-radius: 4px;
 }
 
-.red {
-  background-color: red !important;
+.my-custom-item {
+  padding: 0.8rem;
+  background-color: #4299e1;
+  color: white;
+}
+.my-custom-item:hover {
+  background-color: #fc8181;
+  color: white;
 }
 
-.pink {
-  background-color: pink !important;
-}
-
-.pink:hover {
-  background-color: green !important;
+.my-custom-item-active {
+  background-color: #f8bef3;
 }
 </style>
