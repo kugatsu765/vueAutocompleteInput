@@ -6,7 +6,7 @@ Demo here => [Code Sandbox](https://codesandbox.io/s/kugatsuvueautocompleteinput
 
 ## How to use it
 
-Install with npm. 🚧 Not published yet (soon)
+Install with npm.
 
 ```console
 npm i @kugatsu/vueautocompleteinput --save
