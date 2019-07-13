@@ -195,6 +195,9 @@ export default {
           .includes(this.search.toLowerCase())
       );
 
+      if (this.results.length === 0) {
+        this.$emit("noResult");
+      }
       if (this.search === "") {
         this.$emit("clear");
       }
