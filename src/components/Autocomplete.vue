@@ -176,6 +176,9 @@ export default {
       if (item !== undefined) {
         this.search = item[this.propertyToDisplay];
       }
+    },
+    value(newValue) {
+      this.search = newValue[this.propertyToDisplay];
     }
   },
   methods: {
