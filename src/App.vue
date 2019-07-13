@@ -1,6 +1,12 @@
 <template>
   <div id="app" class="p-8">
-    <h1 class="text-3xl font-medium mb-12">Vue autocomplete demonstation</h1>
+    <h1 class="text-3xl font-medium">Vue autocomplete demonstation</h1>
+    <h1 class="text-xl text-gray-500 font-thin mb-12">
+      <a
+        class="hover:text-gray-800"
+        href="https://github.com/kugatsu765/vueAutocompleteInput"
+      >Ⓒ 2019 - Kugatsu765 on github</a>
+    </h1>
     <h2 class="text-xl font-medium">🚀 Basic use case</h2>
 
     <div class="flex flex-row">
