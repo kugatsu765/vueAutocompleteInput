@@ -24,7 +24,9 @@
           :class="rowClass(index)"
           :key="item.id"
           @click="select(item)"
-        >{{item[propertyToDisplay]}}</li>
+        >
+          <slot name="listItem" v-bind:item="item">{{item[propertyToDisplay]}}</slot>
+        </li>
         <li class="search-result-item-disabled" v-if="results.length === 0">{{emptyResults}}</li>
       </ul>
     </div>
