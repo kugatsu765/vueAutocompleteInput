@@ -9,7 +9,7 @@
     </h1>
     <h2 class="text-xl font-medium">🚀 Basic use case</h2>
 
-    <div class="flex flex-row">
+    <div class="flex flex-col md:flex-row">
       <div class="flex-1 p-3">
         <Autocomplete v-model="fruit" :items="fruits" property-to-display="name"></Autocomplete>
         <div class="mt-3 p-2 bg-gray-300 shadow text-center">
@@ -22,7 +22,7 @@
 
     <h2 class="text-xl font-medium">💄 Custom item row</h2>
 
-    <div class="flex flex-row">
+    <div class="flex flex-col md:flex-row">
       <div class="flex-1 p-3">
         <Autocomplete v-model="article" :items="articles" property-to-display="title">
           <template v-slot:listItem="slotProps">
@@ -39,7 +39,7 @@
 
     <h2 class="text-xl font-medium">🎉 Full</h2>
 
-    <div class="flex flex-row">
+    <div class="flex flex-col md:flex-row">
       <div class="flex-1 p-3">
         <Autocomplete
           v-model="article"
@@ -58,7 +58,7 @@
 
     <h2 class="text-xl font-medium">🎃 Halloween</h2>
 
-    <div class="flex flex-row">
+    <div class="flex flex-col md:flex-row">
       <div class="flex-1 p-3">
         <Autocomplete
           v-model="article"
