@@ -92,7 +92,6 @@
   color: white;
 }
 
-/* Add to props */
 .autocomplete-item-active-custom {
   background-color: #bee3f8;
 }
