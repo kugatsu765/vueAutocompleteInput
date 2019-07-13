@@ -2,6 +2,8 @@
 
 The **Autocomplete vue** component allow you to create select input with autocomplete drop down. You can select with arraow / enter / click or just fill the field.
 
+Demo here => [Code Sandbox](https://codesandbox.io/s/kugatsuvueautocompleteinput-rsxtj)
+
 ## How to use it
 
 Install with npm. 🚧 Not published yet (soon)
