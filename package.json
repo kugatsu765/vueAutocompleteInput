@@ -1,7 +1,7 @@
 {
   "name": "@kugatsu/vueautocompleteinput",
   "description": "Vuejs component for autocomplete input",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "private": false,
   "scripts": {
     "init": "npm install",

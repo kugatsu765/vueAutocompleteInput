@@ -81,6 +81,7 @@
   padding: 4px 8px;
   outline: none;
   font-weight: 300;
+  border: none;
 }
 
 .autocomplete-clear-btn:hover {

@@ -2,7 +2,6 @@
 node_modules
 /public
 /src
-/assets
 /dist/demo.html
 tests
 .babel.config.js

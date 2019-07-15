@@ -4,6 +4,8 @@ The **Autocomplete vue** component allow you to create select input with autocom
 
 Demo here => [Code Sandbox](https://codesandbox.io/s/kugatsuvueautocompleteinput-rsxtj)
 
+![demo](./assets/doc/demo.png)
+
 ## How to use it
 
 Install with npm.
