@@ -42,6 +42,7 @@ data: function() {
 | emptyResults      | No result |                         No results |
 | propertyToDisplay | String    |                              label |
 | disable           | Boolean   |                              false |
+| closeButon        | Boolean   |                               true |
 | classComponent    | String    |                                 "" |
 | classInput        | String    |        "autocomplete-input-custom" |
 | classWrapper      | String    | "autocomplete-list-wrapper-custom" |
@@ -59,7 +60,8 @@ data: function() {
 
 ## Slot
 
-You can huse slot to fully customize item row.
+1. Item row
+   You can huse slot to fully customize item row.
 
 Sample 💩:
 
@@ -69,6 +71,14 @@ Sample 💩:
     <br>
     {{slotProps.item.body}}
 </template>
+```
+
+2. Close btn
+
+Use **closeButton** scope to personalize your clear button or use **autocomplete-clear-btn** to surcharge style.
+
+```javascript
+<template v-slot:closeButton>X</template>
 ```
 
 #### Customise
@@ -92,7 +102,4 @@ You have the possibility of surchage class or redifign them.
 | autocomplete-list-item-custom    |       classItem |
 | autocomplete-item-active-custom  | classItemActive |
 | search-result-item-disabled      |              no |
-
-```
-
-```
+| autocomplete-clear-btn           |              no |
